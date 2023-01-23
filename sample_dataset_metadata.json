@@ -1,0 +1,364 @@
+{
+    "products": {
+        "fapar": {
+            "name": "fAPAR",
+            "igad": {
+                "table": "GRID_083DD_FAPAR6",
+                "grid": "GRID_083DD",
+                "id_col": "G8D_ID",
+                "thmcol_template": "ABSORBED_[MM][DD]",
+                "year_col": "YEAR",
+                "frequency": "t",
+                "units": "dimensionless",
+                "data_srs": "4326",
+                "src_img": null,
+                "storage_folder": "/drought_prod/imagedata/FAPAR/from_database/monitoring/",
+                "filename_template": "fapar_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+                "dates": {
+                    "first": {
+                        "year": 2001,
+                        "month": 1,
+                        "day": 1
+                    }
+                },
+                "mapfile": {
+                    "name": "gdo/gdo_wms.map",
+                    "layer": "fapar_c6_7cls_qkl",
+                    "mf_classes": "fapar.classes.map"
+                },
+                "mapconfig": {
+                    "layer_var": "fapar_c6_7cls_qkl",
+                    "layer_name": "fAPAR",
+                    "layer_dates": "fapar"
+                },
+                "qkl_file": "/gisdata/world/fapar/quicklook/083dd/fapar/[YYYY]/fAPAR_MOD_[YYYY]-[MM]-[DD].gif"
+            },
+            "edo": {
+                "table": "GRID_0416DD_FAPAR_EUROPE",
+                "grid": "GRID_0416DD",
+                "id_col": "G4D_ID",
+                "thmcol_template": "ABSORBED_[MM][DD]",
+                "year_col": "YEAR",
+                "frequency": "t",
+                "data_srs": "4326",
+                "units": "dimensionless",
+                "src_img": null,
+                "storage_folder": null,
+                "filename_template": "fapar_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+                "dates": {
+                    "first": {
+                        "year": 2002,
+                        "month": 1,
+                        "day": 1
+                    }
+                },
+                "mapfile": {
+                    "name": "edo/edo_wms.map",
+                    "layer": "fapar_modis",
+                    "mf_classes": "fapar.classes.map"
+                },
+                "mapconfig": {
+                    "layer_var": "fapar",
+                    "layer_name": "fraction of Absorbed Photosynthetically Active Radiation (fAPAR)",
+                    "layer_dates": "fapar"
+                },
+                "qkl_file": "site/droughts/drought_results/vegetation/fapar/fAPAR_MOD_[YYYY]-[MM]-[DD].png"
+            },
+            "gdo": {
+                "table": "GRID_083DD_FAPAR6",
+                "grid": "GRID_083DD",
+                "id_col": "G8D_ID",
+                "thmcol_template": "ABSORBED_[MM][DD]",
+                "year_col": "YEAR",
+                "frequency": "t",
+                "units": "dimensionless",
+                "data_srs": "4326",
+                "src_img": null,
+                "storage_folder": "/drought_prod/imagedata/FAPAR/from_database/monitoring/",
+                "filename_template": "fapar_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+                "dates": {
+                    "first": {
+                        "year": 2001,
+                        "month": 1,
+                        "day": 1
+                    }
+                },
+                "mapfile": {
+                    "name": "gdo/gdo_wms.map",
+                    "layer": "fapar_c6_7cls_qkl",
+                    "mf_classes": "fapar.classes.map"
+                },
+                "mapconfig": {
+                    "layer_var": "fapar_c6_7cls_qkl",
+                    "layer_name": "fAPAR",
+                    "layer_dates": "fapar"
+                },
+                "qkl_file": "/gisdata/world/fapar/quicklook/083dd/fapar/[YYYY]/fAPAR_MOD_[YYYY]-[MM]-[DD].gif"
+            }
+        },
+        "fapan": {
+            "name": "fAPAR Anomaly",
+            "igad": {
+                "table": "GRID_083DD_FAPAR6",
+                "grid": "GRID_083DD",
+                "id_col": "G8D_ID",
+                "thmcol_template": "ANOMALY_[MM][DD]",
+                "year_col": "YEAR",
+                "frequency": "t",
+                "data_srs": "4326",
+                "units": "dimensionless",
+                "src_img": null,
+                "storage_folder": "/drought_prod/imagedata/FAPAR/from_database/anomalies/",
+                "filename_template": "fpanm_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+                "dates": {
+                    "first": {
+                        "year": 2001,
+                        "month": 1,
+                        "day": 1
+                    }
+                },
+                "mapfile": {
+                    "name": "gdo/gdo_wms.map",
+                    "layer": "fapar_anom_c6_7cls_qkl",
+                    "mf_classes": "fapar.anomaly.classes.map"
+                },
+                "mapconfig": {
+                    "layer_var": "fapar_anom_c6_7cls_qkl",
+                    "layer_name": "fAPAR Anomaly",
+                    "layer_dates": "fapar_anom"
+                },
+                "qkl_file": "/gisdata/world/fapar/quicklook/083dd/fapar_anom/[YYYY]/fAPAR_MOD_an_[YYYY]-[MM]-[DD].gif"
+            },
+            "edo": {
+                "table": "GRID_0416DD_FAPAR_EUROPE",
+                "grid": "GRID_0416DD",
+                "id_col": "ID",
+                "thmcol_template": "ANOMALY_[MM][DD]",
+                "year_col": "YEAR",
+                "frequency": "t",
+                "data_srs": "4326",
+                "units": "dimensionless",
+                "src_img": null,
+                "storage_folder": null,
+                "filename_template": "fpanm_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+                "dates": {
+                    "first": {
+                        "year": 2002,
+                        "month": 1,
+                        "day": 1
+                    }
+                },
+                "mapfile": {
+                    "name": "edo/edo_wms.map",
+                    "layer": "fapar_anom_modis",
+                    "mf_classes": "fapar.anomaly.classes.map"
+                },
+                "mapconfig": {
+                    "layer_var": "fapar_anom",
+                    "layer_name": "fAPAR Anomaly",
+                    "layer_dates": "fapar_anom"
+                },
+                "qkl_file": "site/droughts/drought_results/vegetation/fapar_anom/fAPAR_MOD_an_[YYYY]-[MM]-[DD].png"
+            },
+            "gdo": {
+                "table": "GRID_083DD_FAPAR6",
+                "grid": "GRID_083DD",
+                "id_col": "G8D_ID",
+                "thmcol_template": "ANOMALY_[MM][DD]",
+                "year_col": "YEAR",
+                "frequency": "t",
+                "data_srs": "4326",
+                "units": "dimensionless",
+                "src_img": null,
+                "storage_folder": "/drought_prod/imagedata/FAPAR/from_database/anomalies/",
+                "filename_template": "fpanm_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+                "dates": {
+                    "first": {
+                        "year": 2001,
+                        "month": 1,
+                        "day": 1
+                    }
+                },
+                "mapfile": {
+                    "name": "gdo/gdo_wms.map",
+                    "layer": "fapar_anom_c6_7cls_qkl",
+                    "mf_classes": "fapar.anomaly.classes.map"
+                },
+                "mapconfig": {
+                    "layer_var": "fapar_anom_c6_7cls_qkl",
+                    "layer_name": "fAPAR Anomaly",
+                    "layer_dates": "fapar_anom"
+                },
+                "qkl_file": "/gisdata/world/fapar/quicklook/083dd/fapar_anom/[YYYY]/fAPAR_MOD_an_[YYYY]-[MM]-[DD].gif"
+            }
+        },
+        "monthly_prec_forecast": {
+            "name": "Monthly Precipitation Forecast (ICPAC)",
+            "igad": {
+                "table": "grid_01dd_monthly_prec_forecasts",
+                "grid": "GRID_01DD",
+                "vars_mapping": [
+                    {
+                        "column_name": "pred_prec",
+                        "variable_name": "prec"
+                    }
+                ],
+                "id_col": "ID",
+                "frequency": "1m",
+                "data_srs": "4326",
+                "units": "mm",
+                "src_img": null,
+                "storage_folder": "/drought_prod/downloads/monthly_prec_forecast_igad",
+                "filename_template": "PredictedRain_[Month]_[Month][Year].[ext]",
+                "file_name_pattern": "^PredictedRain_([A-Za-z]{3})_([A-Za-z]{3})([0-9]{4}).nc$",
+                "regex_parts_mapping": [
+                    "pred_month", "init_month", "init_year"
+                ],
+                "dates": {
+                    "first": {
+                        "year": 2021,
+                        "month": 1,
+                        "day": 1
+                    }
+                }
+            }
+        },
+        "seasonal_observed_total_prec": {
+            "name": "Seasonally Observed Rainfall Total (CHIRPS). Not Finalized!",
+            "igad": {
+                "table": "grid_01dd_seasonal_observed_total_prec",
+                "grid": "GRID_01DD",
+                "vars_mapping": [
+                    {
+                        "column_name": "total_prec",
+                        "variable_name": "prec"
+                    }
+                ],
+                "id_col": "ID",
+                "frequency": "1m",
+                "data_srs": "4326",
+                "units": "mm",
+                "src_img": null,
+                "storage_folder": "/drought_prod/downloads/monthly_observed_prec_igad",
+                "filename_template": "ObservedRain_[Season]_[Month][Year].[ext]",
+                "file_name_pattern": "^ObservedRain_([A-Za-z]{3}-[A-Za-z]{3})_([A-Za-z]{3})([0-9]{4}).nc$",
+                "regex_parts_mapping": [
+                    "obs_season", "init_month", "init_year"
+                ],
+                "dates": {
+                    "first": {
+                        "year": 2021,
+                        "month": 1,
+                        "day": 1
+                    }
+                }
+            }
+        },
+        "seasonal_prec_forecast": {
+            "name": "Seasonal Precipitation Forecast (ICPAC)",
+            "igad": {
+                "table": "grid_01dd_seasonal_prec_forecasts",
+                "grid": "GRID_01DD",
+                "vars_mapping": [
+                    {
+                        "column_name": "pred_prec",
+                        "variable_name": "prec"
+                    }
+                ],
+                "id_col": "ID",
+                "frequency": "3m",
+                "data_srs": "4326",
+                "units": "mm",
+                "src_img": null,
+                "storage_folder": "/drought_prod/downloads/seasonal_prec_forecast_igad",
+                "filename_template": "PredictedRain_[Season]_[Month][Year].[ext]",
+                "file_name_pattern": "^PredictedRain_([A-Za-z]{3}-[A-Za-z]{3})_([A-Za-z]{3})([0-9]{4}).nc$",
+                "regex_parts_mapping": [
+                    "pred_season", "init_month", "init_year"
+                ],
+                "dates": {
+                    "first": {
+                        "year": 2021,
+                        "month": 1,
+                        "day": 1
+                    }
+                }
+            }
+        },
+        "monthly_probabilistic_prec_forecast": {
+            "name": "Monthly Probabilistic Precipitation Forecast (ICPAC)",
+            "igad": {
+                "table": "grid_01dd_monthly_probabilistic_prec_forecasts",
+                "grid": "GRID_01DD",
+                "vars_mapping": [
+                    {
+                        "column_name": "prob_below",
+                        "variable_name": "below"
+                    }, {
+                        "column_name": "prob_normal",
+                        "variable_name": "normal"
+                    }, {
+                        "column_name": "prob_above",
+                        "variable_name": "above"
+                    }
+                ],
+                "id_col": "ID",
+                "frequency": "1m",
+                "data_srs": "4326",
+                "units": "%",
+                "src_img": null,
+                "storage_folder": "/drought_prod/downloads/monthly_probabilistic_prec_forecast_igad",
+                "filename_template": "PredictedProbabilityRain_[Month]_[Month][Year].[ext]",
+                "file_name_pattern": "^PredictedProbabilityRain_([A-Za-z]{3})_([A-Za-z]{3})([0-9]{4}).nc$",
+                "regex_parts_mapping": [
+                    "pred_month", "init_month", "init_year"
+                ],
+                "dates": {
+                    "first": {
+                        "year": 2021,
+                        "month": 1,
+                        "day": 1
+                    }
+                }
+            }
+        },
+        "seasonal_probabilistic_prec_forecast": {
+            "name": "Seasonal Probabilistic Precipitation Forecast (ICPAC)",
+            "igad": {
+                "table": "grid_01dd_seasonal_probabilistic_prec_forecasts",
+                "grid": "GRID_01DD",
+                "vars_mapping": [
+                    {
+                        "column_name": "prob_below",
+                        "variable_name": "below"
+                    }, {
+                        "column_name": "prob_normal",
+                        "variable_name": "normal"
+                    }, {
+                        "column_name": "prob_above",
+                        "variable_name": "above"
+                    }
+                ],
+                "id_col": "ID",
+                "frequency": "3m",
+                "data_srs": "4326",
+                "units": "%",
+                "src_img": null,
+                "storage_folder": "/drought_prod/downloads/seasonal_probabilistic_prec_forecast_igad",
+                "filename_template": "PredictedProbabilityRain_[Season]_[Month][Year].[ext]",
+                "file_name_pattern": "^PredictedProbabilityRain_([A-Za-z]{3}-[A-Za-z]{3})_([A-Za-z]{3})([0-9]{4}).nc$",
+                "regex_parts_mapping": [
+                    "pred_season", "init_month", "init_year"
+                ],
+                "dates": {
+                    "first": {
+                        "year": 2021,
+                        "month": 1,
+                        "day": 1
+                    }
+                }
+            }
+        }
+    },
+    "fs_templates": {}
+}

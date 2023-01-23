@@ -1,0 +1,6 @@
+{
+    "config_base_dir": "/absolute/path/to/dbinterface/working/dir",
+    "database_credentials": "database_config.json",
+    "dataset_metadata": "dataset_metadata.json",
+    "logging_config": "logging_config.json"
+  }

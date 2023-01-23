@@ -1,0 +1,54 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "simple": {
+            "format": "%(asctime)s - %(levelname)s - %(message)s",
+			"datefmt": "%a, %d %b %Y %H:%M:%S"
+        }
+    },
+
+    "handlers": {
+        "info_file_handler": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "simple",
+            "filename": "/home/jason/icpac/pydrought/dbinterface.log",
+            "when": "D",
+            "interval": 1
+        },
+		"stream_handler": {
+		    "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "simple"
+		},
+		"SMTP_handler": {
+			"class": "logging.handlers.SMTPHandler",
+			"level": "INFO",
+			"formatter": "simple",
+		    "mailhost":["smtpconnector.jrc.it", 25],
+            "fromaddr": "JRC-DROUGHT-NOREPLY@ec.europa.eu",
+            "toaddrs": [""],
+			"subject" : "EDO & GDO Download service Message"
+        }
+    },
+    "loggers": {
+
+        "log": {
+            "level": "DEBUG",
+            "handlers": ["info_file_handler","stream_handler"],
+            "propagate": "no"
+        },
+		"email": {
+            "level": "INFO",
+            "handlers": ["info_file_handler","stream_handler","SMTP_handler"],
+            "propagate": "no"
+        }
+    },
+
+    "root": {
+        "level": "INFO",
+        "handlers": ["info_file_handler"]
+    }
+}
+
