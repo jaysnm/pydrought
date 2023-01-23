@@ -1,0 +1,1369 @@
+{
+  "products": {
+    "cdinx": {
+      "name": "Combined Drought Indicator",
+      "igad": {
+        "table": "GRID_01DD_CDI_CHIRPS",
+        "grid": "GRID_01DD",
+        "id_col": "G0D_ID",
+        "thmcol_template": "CDI_[MM][DD]",
+        "year_col": "YEAR",
+        "frequency": "t",
+        "data_srs": "4326",
+        "data_type": "",
+        "units": "dimensionless",
+        "nodata_value": -9999.0,
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/IGAD_Combined_Drought_Indicator",
+        "filename_template": "cdinx_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2012,
+            "month": 3,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "Combined Drought Indicator",
+          "mf_classes": null
+        },
+        "mapconfig": {
+          "layer_var": "cdi",
+          "layer_name": "Combined Drought Indicator",
+          "layer_dates": "cdi"
+        },
+        "qkl_file": "site/droughts/drought_results/combined/combinedDroughtIndicator_[YYYY]-[MM]-[DD].gif",
+        "wms_server": ""
+      }
+    },
+    "rdria": {
+      "name": "Risk of Drought Impact for Agriculture (RDrI-Agri)",
+      "gdo": {
+        "table": "GRID_1DD_RDRI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "RDRI_[MM][DD]",
+        "year_col": "YEAR",
+        "frequency": "t",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "nodata_value": -9999.0,
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/rdri",
+        "filename_template": "rdria_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2013,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "grid_1dd_rdri",
+          "mf_classes": "rdri.shared.map"
+        },
+        "mapconfig": {
+          "layer_var": "rdri",
+          "layer_name": "Risk of Drought Impact for Agriculture (RDrI-Agri)",
+          "layer_dates": "rdri"
+        },
+        "qkl_file": "gisdata/world/drought/rdri/[YYYY]/rdri.[YYYY]-[MM]-[TT].png",
+        "wms_server": ""
+      }
+    },
+    "fapar": {
+      "name": "fAPAR",
+      "igad": {
+        "name": "fAPAR",
+        "table": "GRID_083DD_FAPAR6",
+        "grid": "GRID_083DD",
+        "id_col": "G8D_ID",
+        "thmcol_template": "ABSORBED_[MM][DD]",
+        "year_col": "YEAR",
+        "frequency": "t",
+        "units": "dimensionless",
+        "data_srs": "4326",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/IGAD_Fraction_of_Absorbed_Photosynthetically_Active_Radiation_fAPAR",
+        "filename_template": "fapar_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2001,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "fapar_c6_7cls_qkl",
+          "mf_classes": "fapar.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "fapar_c6_7cls_qkl",
+          "layer_name": "fAPAR",
+          "layer_dates": "fapar"
+        },
+        "qkl_file": "/gisdata/world/fapar/quicklook/083dd/fapar/[YYYY]/fAPAR_MOD_[YYYY]-[MM]-[DD].gif"
+      }
+    },
+    "fapan": {
+      "name": "fAPAR Anomaly",
+      "igad": {
+        "name": "fAPAR Anomaly",
+        "table": "GRID_083DD_FAPAR6",
+        "grid": "GRID_083DD",
+        "id_col": "G8D_ID",
+        "thmcol_template": "ANOMALY_[MM][DD]",
+        "year_col": "YEAR",
+        "frequency": "t",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/IGAD_Fraction_of_Absorbed_Photosynthetically_Active_Radiation_Anomalies_fAPAR",
+        "filename_template": "fpanm_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2001,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "fapar_anom_c6_7cls_qkl",
+          "mf_classes": "fapar.anomaly.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "fapar_anom_c6_7cls_qkl",
+          "layer_name": "fAPAR Anomaly",
+          "layer_dates": "fapar_anom"
+        },
+        "qkl_file": "/gisdata/world/fapar/quicklook/083dd/fapar_anom/[YYYY]/fAPAR_MOD_an_[YYYY]-[MM]-[DD].gif"
+      },
+      "edo": {
+        "table": "GRID_0416DD_FAPAR_EUROPE",
+        "grid": "GRID_0416DD",
+        "id_col": "ID",
+        "thmcol_template": "ANOMALY_[MM][DD]",
+        "year_col": "YEAR",
+        "frequency": "t",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": null,
+        "filename_template": "fpanm_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2002,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "fapar_anom_modis",
+          "mf_classes": "fapar.anomaly.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "fapar_anom",
+          "layer_name": "fAPAR Anomaly",
+          "layer_dates": "fapar_anom"
+        },
+        "qkl_file": "site/droughts/drought_results/vegetation/fapar_anom/fAPAR_MOD_an_[YYYY]-[MM]-[DD].png"
+      },
+      "gdo": {
+        "table": "GRID_083DD_FAPAR6",
+        "grid": "GRID_083DD",
+        "id_col": "G8D_ID",
+        "thmcol_template": "ANOMALY_[MM][DD]",
+        "year_col": "YEAR",
+        "frequency": "t",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/FAPAR/from_database/anomalies/",
+        "filename_template": "fpanm_m_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2001,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "fapar_anom_c6_7cls_qkl",
+          "mf_classes": "fapar.anomaly.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "fapar_anom_c6_7cls_qkl",
+          "layer_name": "fAPAR Anomaly",
+          "layer_dates": "fapar_anom"
+        },
+        "qkl_file": "/gisdata/world/fapar/quicklook/083dd/fapar_anom/[YYYY]/fAPAR_MOD_an_[YYYY]-[MM]-[DD].gif"
+      }
+    },
+    "smant": {
+      "name": "Soil Moisture Anomaly Ensemble 3M",
+      "igad": {
+        "name": "Soil Moisture Anomaly Ensemble 3M",
+        "table": "GRID_01DD_ENSEMBLE_SM",
+        "grid": "GRID_01DD",
+        "id_col": "ID",
+        "thmcol_template": "ANOMALY_[MM][DD]",
+        "year_col": "YEAR",
+        "frequency": "t",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/IGAD_Ensemble_Soil_Moisture_Anomaly",
+        "filename_template": "sman3_a_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2001,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "smanom_01dd_t",
+          "mf_classes": "soilmoist.anomaly.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "smanom_t",
+          "layer_name": "Soil Moisture Anomaly",
+          "layer_dates": "sm"
+        },
+        "qkl_file": "gisdata/world/soil_moisture/sm_anom/[YYYY]/smanom.[YYYY]-[MM]-[TT].gif"
+      },
+      "gdo": {
+        "name": "Soil Moisture Anomaly Ensemble 3M",
+        "table": "grid_01dd_ensemble_sm",
+        "grid": "grid_01dd",
+        "id_col": "id",
+        "thmcol_template": "anomaly_[MM][DD]",
+        "year_col": "year",
+        "frequency": "t",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/Users/grace/Projects/python",
+        "filename_template": "sman3_a_[aoi]_[YYYY][MM][DD]_t.[ext]",
+        "dates": {
+          "first": {
+            "year": 2001,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "smanom_01dd_t",
+          "mf_classes": "soilmoist.anomaly.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "smanom_t",
+          "layer_name": "Soil Moisture Anomaly",
+          "layer_dates": "sm"
+        },
+        "qkl_file": "gisdata/world/soil_moisture/sm_anom/[YYYY]/smanom.[YYYY]-[MM]-[TT].gif"
+      }
+    },
+    "precp_gpcc": {
+      "name": "Precipitation",
+      "igad": {
+        "table": "GRID_1DD_GPCC_YEAR",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "RAIN_[MM]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "mm/month",
+        "src_img": null,
+        "storage_folder": "/Users/grace/Projects/EADW/python/PRECIPITATION/GPCC",
+        "filename_template": "precp_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": null
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "monrain_grid",
+          "mf_classes": "rainfall.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "monrain",
+          "layer_name": "Monthly Precipitation (mm/month)",
+          "layer_dates": "monrain"
+        },
+        "qkl_file": "gisdata/continental/edo/precipitation/rain/[YYYY]/edo_rain_[YYYY]-[MM].gif"
+      }
+    },
+    "precm": {
+      "name": "Precipitation, monitoring",
+      "igad": {
+        "table": "GRID_005DD_PRECIPITATION",
+        "grid": "GRID_005DD",
+        "id_col": "G05D_ID",
+        "thmcol_template": "FINAL_RAIN_[MM]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "mm/month",
+        "src_img": null,
+        "storage_folder": null,
+        "filename_template": "precm_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": null,
+            "month": null,
+            "day": null
+          }
+        },
+        "mapfile": null,
+        "mapconfig": null,
+        "qkl_file": null
+      },
+      "edo": {
+        "table": "GRID_1DD_GPCC",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "MON_RAIN_[MM]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "mm/month",
+        "src_img": null,
+        "storage_folder": null,
+        "filename_template": "precm_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": null,
+            "month": null,
+            "day": null
+          }
+        },
+        "mapfile": null,
+        "mapconfig": null,
+        "qkl_file": null
+      },
+      "gdo": {
+        "table": "GRID_1DD_GPCC",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "MON_RAIN_[MM]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "mm/month",
+        "src_img": null,
+        "storage_folder": null,
+        "filename_template": "precm_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": null,
+            "month": null,
+            "day": null
+          }
+        },
+        "mapfile": null,
+        "mapconfig": null,
+        "qkl_file": null
+      }
+    },
+    "precg": {
+      "name": "Precipitation, first guess",
+      "igad": {
+        "table": "GRID_005DD_PRECIPITATION",
+        "grid": "GRID_005DD",
+        "id_col": "G05D_ID",
+        "thmcol_template": "PLERIMINARY_RAIN_[MM]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "mm/month",
+        "src_img": null,
+        "storage_folder": null,
+        "filename_template": "precg_g_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": null,
+            "month": null,
+            "day": null
+          }
+        },
+        "mapfile": null,
+        "mapconfig": null,
+        "qkl_file": null
+      },
+      "edo": {
+        "table": "GRID_1DD_GPCC",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "GUESS_RAIN_[MM]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "mm/month",
+        "src_img": null,
+        "storage_folder": null,
+        "filename_template": "precg_g_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": null,
+            "month": null,
+            "day": null
+          }
+        },
+        "mapfile": null,
+        "mapconfig": null,
+        "qkl_file": null
+      },
+      "gdo": {
+        "table": "GRID_005DD_PRECIPITATION",
+        "grid": "GRID_005DD",
+        "id_col": "G05D_ID",
+        "thmcol_template": "PLERIMINARY_RAIN_[MM]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "mm/month",
+        "src_img": null,
+        "storage_folder": null,
+        "filename_template": "precg_g_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": null,
+            "month": null,
+            "day": null
+          }
+        },
+        "mapfile": null,
+        "mapconfig": null,
+        "qkl_file": null
+      }
+    },
+    "spg01": {
+      "name": "Standardized Precipitation Index, 1-month accumulation period (SPI-1)",
+      "igad": {
+        "name": "Standardized Precipitation Index, 1-month accumulation period (SPI-1)",
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM]01",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/Users/grace/Projects/python/",
+        "filename_template": "spg01_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "edo": {
+        "table": "GRID_025DD_SPI",
+        "grid": "GRID_025DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/spi_precip/from_database/spi/",
+        "filename_template": "spi[TS]_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "spi_blended_025dd",
+          "mf_classes": "spi.blended.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "gdo": {
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drough_prod/imagedata/spi_precip/from_database/spi",
+        "filename_template": "spiTS_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 2019,
+            "month": 1,
+            "day": 2
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi",
+          "layer_name": "Standardized Precipitation Index (SPI)",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/world/precipitation/spi/[YYYY]/spi[TS].[YYYY]-[MM].png"
+      }
+    },
+    "spg03": {
+      "name": "Standardized Precipitation Index, 3-month accumulation period (SPI-3)",
+      "igad": {
+        "name": "Standardized Precipitation Index, 3-month accumulation period (SPI-3)",
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM]03",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/gpcc_spi/exports/",
+        "filename_template": "spg03_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "edo": {
+        "table": "GRID_025DD_SPI",
+        "grid": "GRID_025DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/spi_precip/from_database/spi/",
+        "filename_template": "spi[TS]_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "spi_blended_025dd",
+          "mf_classes": "spi.blended.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "gdo": {
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drough_prod/imagedata/spi_precip/from_database/spi",
+        "filename_template": "spiTS_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 2019,
+            "month": 1,
+            "day": 2
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi",
+          "layer_name": "Standardized Precipitation Index (SPI)",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/world/precipitation/spi/[YYYY]/spi[TS].[YYYY]-[MM].png"
+      }
+    },
+    "spg06": {
+      "name": "Standardized Precipitation Index, 6-month accumulation period (SPI-6)",
+      "igad": {
+        "name": "Standardized Precipitation Index, 6-month accumulation period (SPI-6)",
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM]06",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/gpcc_spi/exports/",
+        "filename_template": "spg06_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "edo": {
+        "table": "GRID_025DD_SPI",
+        "grid": "GRID_025DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/spi_precip/from_database/spi/",
+        "filename_template": "spi[TS]_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "spi_blended_025dd",
+          "mf_classes": "spi.blended.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "gdo": {
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drough_prod/imagedata/spi_precip/from_database/spi",
+        "filename_template": "spiTS_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 2019,
+            "month": 1,
+            "day": 2
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi",
+          "layer_name": "Standardized Precipitation Index (SPI)",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/world/precipitation/spi/[YYYY]/spi[TS].[YYYY]-[MM].png"
+      }
+    },
+    "spg09": {
+      "name": "Standardized Precipitation Index, 9-month accumulation period (SPI-9)",
+      "igad": {
+        "name": "Standardized Precipitation Index, 9-month accumulation period (SPI-9)",
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM]09",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/gpcc_spi/exports/",
+        "filename_template": "spg09_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "edo": {
+        "table": "GRID_025DD_SPI",
+        "grid": "GRID_025DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/spi_precip/from_database/spi/",
+        "filename_template": "spi[TS]_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "spi_blended_025dd",
+          "mf_classes": "spi.blended.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "gdo": {
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drough_prod/imagedata/spi_precip/from_database/spi",
+        "filename_template": "spiTS_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 2019,
+            "month": 1,
+            "day": 2
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi",
+          "layer_name": "Standardized Precipitation Index (SPI)",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/world/precipitation/spi/[YYYY]/spi[TS].[YYYY]-[MM].png"
+      }
+    },
+    "spg12": {
+      "name": "Standardized Precipitation Index, 12-month accumulation period (SPI-12)",
+      "igad": {
+        "name": "Standardized Precipitation Index, 12-month accumulation period (SPI-12)",
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM]12",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/gpcc_spi/exports/",
+        "filename_template": "spg12_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "edo": {
+        "table": "GRID_025DD_SPI",
+        "grid": "GRID_025DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/spi_precip/from_database/spi/",
+        "filename_template": "spi[TS]_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "spi_blended_025dd",
+          "mf_classes": "spi.blended.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "gdo": {
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drough_prod/imagedata/spi_precip/from_database/spi",
+        "filename_template": "spiTS_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 2019,
+            "month": 1,
+            "day": 2
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi",
+          "layer_name": "Standardized Precipitation Index (SPI)",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/world/precipitation/spi/[YYYY]/spi[TS].[YYYY]-[MM].png"
+      }
+    },
+    "spg24": {
+      "name": "Standardized Precipitation Index, 24-month accumulation period (SPI-24)",
+      "igad": {
+        "name": "Standardized Precipitation Index, 24-month accumulation period (SPI-24)",
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM]24",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/gpcc_spi/exports/",
+        "filename_template": "spg24_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "edo": {
+        "table": "GRID_025DD_SPI",
+        "grid": "GRID_025DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/spi_precip/from_database/spi/",
+        "filename_template": "spi[TS]_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "spi_blended_025dd",
+          "mf_classes": "spi.blended.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "gdo": {
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drough_prod/imagedata/spi_precip/from_database/spi",
+        "filename_template": "spiTS_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 2019,
+            "month": 1,
+            "day": 2
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi",
+          "layer_name": "Standardized Precipitation Index (SPI)",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/world/precipitation/spi/[YYYY]/spi[TS].[YYYY]-[MM].png"
+      }
+    },
+    "spg48": {
+      "name": "Standardized Precipitation Index, 48-month accumulation period (SPI-48)",
+      "igad": {
+        "name": "Standardized Precipitation Index, 48-month accumulation period (SPI-48)",
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM]48",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/mukau_jobs/gpcc_spi/exports/",
+        "filename_template": "spg48_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "edo": {
+        "table": "GRID_025DD_SPI",
+        "grid": "GRID_025DD",
+        "id_col": "G2D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drought_prod/imagedata/spi_precip/from_database/spi/",
+        "filename_template": "spi[TS]_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 1975,
+            "month": 1,
+            "day": 1
+          }
+        },
+        "mapfile": {
+          "name": "edo/edo_wms.map",
+          "layer": "spi_blended_025dd",
+          "mf_classes": "spi.blended.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi_blended",
+          "layer_name": "SPI blended and interpolated",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/continental/edo/precipitation/spi/[YYYY]/edo_spi[TS]_[YYYY]-[MM].gif"
+      },
+      "gdo": {
+        "table": "GRID_1DD_SPI",
+        "grid": "GRID_1DD",
+        "id_col": "G1D_ID",
+        "thmcol_template": "SPI_[MM][TS]",
+        "year_col": "YEAR",
+        "frequency": "m",
+        "data_srs": "4326",
+        "units": "dimensionless",
+        "src_img": null,
+        "storage_folder": "/drough_prod/imagedata/spi_precip/from_database/spi",
+        "filename_template": "spiTS_m_[aoi]_[YYYY][MM]_m.[ext]",
+        "dates": {
+          "first": {
+            "year": 2019,
+            "month": 1,
+            "day": 2
+          }
+        },
+        "mapfile": {
+          "name": "gdo/gdo_wms.map",
+          "layer": "SPI_1dd",
+          "mf_classes": "spi.classes.map"
+        },
+        "mapconfig": {
+          "layer_var": "spi",
+          "layer_name": "Standardized Precipitation Index (SPI)",
+          "layer_dates": "spi_blended"
+        },
+        "qkl_file": "/gisdata/world/precipitation/spi/[YYYY]/spi[TS].[YYYY]-[MM].png"
+      }
+    }
+  },
+  "grids": {
+    "grid_1dd": {
+      "bbox": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "xcol_max": 359,
+      "yrow_max": 179,
+      "srs": "EPSG:4326",
+      "ul_lon": -180.0,
+      "ul_lat": 90.0,
+      "res_x": 1,
+      "res_y": 1,
+      "id_col": "ID",
+      "ref_id_col": "G1D_ID",
+      "transf_matrix": [
+        -180.0,
+        1.0,
+        0,
+        90.0,
+        0,
+        -1.0
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    },
+    "grid_05dd": {
+      "bbox": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "xcol_max": 4628,
+      "yrow_max": 2034,
+      "srs": "EPSG:4326",
+      "ul_lon": -180.0,
+      "ul_lat": 90.0,
+      "res_x": 0.5,
+      "res_y": 0.5,
+      "id_col": "ID",
+      "ref_id_col": "G5D_ID",
+      "transf_matrix": [
+        -180.0,
+        0.5,
+        0,
+        90.0,
+        0,
+        -0.5
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    },
+    "grid_005dd": {
+      "bbox": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "xcol_max": 4771,
+      "yrow_max": 2075,
+      "srs": "EPSG:4326",
+      "ul_lon": -180.0,
+      "ul_lat": 90.0,
+      "res_x": 0.05,
+      "res_y": 0.05,
+      "id_col": "ID",
+      "ref_id_col": "G005D_ID",
+      "transf_matrix": [
+        -180.0,
+        0.05,
+        0,
+        90.0,
+        0,
+        -0.05
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    },
+    "grid_025dd": {
+      "bbox": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "xcol_max": 1439,
+      "yrow_max": 719,
+      "srs": "EPSG:4326",
+      "ul_lon": -180.0,
+      "ul_lat": 90.0,
+      "res_x": 0.25,
+      "res_y": 0.25,
+      "id_col": "ID",
+      "ref_id_col": "G2D_ID",
+      "transf_matrix": [
+        -180.0,
+        0.25,
+        0,
+        90.0,
+        0,
+        -0.25
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    },
+    "grid_01dd": {
+      "bbox": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "xcol_max": 3599,
+      "yrow_max": 1799,
+      "srs": "EPSG:4326",
+      "ul_lon": -180.0,
+      "ul_lat": 90.0,
+      "res_x": 0.1,
+      "res_y": 0.1,
+      "id_col": "ID",
+      "ref_id_col": "G0D_ID",
+      "transf_matrix": [
+        -180.0,
+        0.1,
+        0,
+        90.0,
+        0,
+        -0.1
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    },
+    "grid_083dd": {
+      "bbox": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "xcol_max": 4319,
+      "yrow_max": 2159,
+      "srs": "EPSG:4326",
+      "ul_lon": -180.0,
+      "ul_lat": 90.0,
+      "res_x": 0.08333333333,
+      "res_y": 0.08333333333,
+      "id_col": "ID",
+      "ref_id_col": "G8D_ID",
+      "transf_matrix": [
+        -180.0,
+        0.08333333333,
+        0,
+        90.0,
+        0,
+        -0.08333333333
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    },
+    "grid_0416dd": {
+      "bbox": [
+        -180,
+        -90,
+        180,
+        90
+      ],
+      "xcol_max": 8639,
+      "yrow_max": 4319,
+      "srs": "EPSG:4326",
+      "ul_lon": -180.0,
+      "ul_lat": 90.0,
+      "res_x": 0.04166666667,
+      "res_y": 0.04166666667,
+      "id_col": "ID",
+      "ref_id_col": "G4D_ID",
+      "transf_matrix": [
+        -180.0,
+        0.04166666667,
+        0,
+        90.0,
+        0,
+        -0.04166666667
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    },
+    "grid_5km_laea": {
+      "xcol_max": 999,
+      "yrow_max": 949,
+      "srs": "EPSG:4326",
+      "ul_lon": -35.034029,
+      "ul_lat": 66.98214,
+      "res_x": "",
+      "res_y": "",
+      "id_col": "ID",
+      "ref_id_col": "ID",
+      "transf_matrix": [
+        -35.034029,
+        0.045,
+        0,
+        66.98214,
+        0,
+        -0.045
+      ],
+      "fkeys": {
+        "CTY_ID": {
+          "COUNTRIES": "ID"
+        }
+      }
+    }
+  }
+}
