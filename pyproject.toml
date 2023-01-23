@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "pydrought"
+version = "0.2.1"
+description = "Python common modules for EDO, GDO & ICPAC drought data management"
+authors = ["jaysnm <jaysnmury@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+cx-oracle = "7.3.0"
+pysftp = "0.2.9"
+numpy = "1.22.0"
+cryptography = "3.3.2"
+PyYAML = "5.4"
+zipfile2 = "0.0.12"
+netCDF4 = "^1.6.2"
+xarray = "^2022.12.0"
+rioxarray = "^0.13.3"
+Pillow = "^9.4.0"
+ipython = "^8.8.0"
+jupyterlab = "^3.5.2"
+pydantic = {extras = ["dotenv"], version = "^1.10.4"}
+black = "^22.12.0"
+SQLAlchemy = "^1.4.46"
+pangres = "^4.1.2"
+setuptools = "^66.0.0"
+psycopg2 = "^2.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
