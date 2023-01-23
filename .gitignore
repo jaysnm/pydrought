@@ -6,6 +6,7 @@
 *.sav
 *.dll
 *.log
+*.log.*
 /R/r2db_config.RData
 __pycache__/
 *.log.
@@ -113,3 +114,13 @@ venv.bak/
 .spyderproject
 .spyproject
 
+# vscode settings
+.vscode
+
+# user defined configs
+*config.json
+*metadata.json
+
+# test fixtures
+notebooks
+data

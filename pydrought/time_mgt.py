@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 #
-#..............................................................................
- #  Name        : time_mgt.py
- #  Application : 
- #  Author      : Carolina Arias Munoz
- #  Created     : 2018-08-29
- #                Packages: matplotlib, cartopy
- #  Purpose     : This module contains generic functionality for extracting data 
- #             from and into postgres using Psycopg2                
-#..............................................................................
+# ..............................................................................
+#  Name        : time_mgt.py
+#  Application :
+#  Author      : Carolina Arias Munoz
+#  Created     : 2018-08-29
+#                Packages: matplotlib, cartopy
+#  Purpose     : This module contains generic functionality for extracting data
+#             from and into postgres using Psycopg2
+# ..............................................................................
 
 
 # ..............................................................................
@@ -23,15 +23,13 @@ import numpy as np
 # CLASSES
 # ..............................................................................
 
-class Week:
 
+class Week:
     def __init__(self, year, month, day):
 
         self._start = self._get_start_date_from_params(year, month, day)
         self._end = self._get_end_date_from_start_date()
         self._imput_date = datetime.datetime(year, month, day)
-
-
 
     @property
     def start(self):
@@ -54,13 +52,13 @@ class Week:
             input_date = datetime.datetime(year, month, day)
             return input_date - timedelta(days=input_date.weekday())
         except:
-            raise Exception('Invalid inputs.')
+            raise Exception("Invalid inputs.")
 
     def _get_end_date_from_start_date(self):
         return self._start + timedelta(days=6)
 
     def _to_str(self):
-        return '{}-{:02d}'.format(self._end.year, self.week)
+        return "{}-{:02d}".format(self._end.year, self.week)
 
     def __eq__(self, other):
         return self.start == other.start and self.end == other.end
@@ -82,12 +80,13 @@ class Week:
             return Week(new.year, new.month, new.day)
 
         if type(other) == Week:
-            dates_list = [self.start + timedelta(i) for i in range(int((other._start -
-                                                                        self.start).days) + 1)]
+            dates_list = [
+                self.start + timedelta(i)
+                for i in range(int((other._start - self.start).days) + 1)
+            ]
             weeks_list = []
             for day_date in dates_list:
-                week_date = Week(day_date.year, day_date.month,
-                                   day_date.day)
+                week_date = Week(day_date.year, day_date.month, day_date.day)
                 if week_date not in weeks_list:
                     weeks_list.append(week_date)
             return weeks_list
@@ -105,14 +104,13 @@ class Week:
         return Dekad(new.year, new.month, new.day)
 
     def __repr__(self):
-        return '<Week {} of year {}>'.format(self.week, self.year)
+        return "<Week {} of year {}>".format(self.week, self.year)
 
     def __hash__(self):
         return hash(self.__repr__())
 
 
 class Dekad:
-
     def __init__(self, year, month, day):
 
         self._year = year
@@ -121,8 +119,7 @@ class Dekad:
 
     @property
     def start(self):
-        return self._get_start_date_from_params(self._year, self._month,
-                                                self._day)
+        return self._get_start_date_from_params(self._year, self._month, self._day)
 
     @property
     def end(self):
@@ -178,7 +175,7 @@ class Dekad:
             return datetime.datetime(year, month, start_day)
 
         except:
-            raise Exception('Invalid inputs.')
+            raise Exception("Invalid inputs.")
 
     def _get_end_date_from_start_date(self, start_datetime):
 
@@ -189,7 +186,7 @@ class Dekad:
         elif start_datetime.day == 1:
             last_day = 10
         else:
-            raise Exception('Dekad start day should be 1, 11, or 21')
+            raise Exception("Dekad start day should be 1, 11, or 21")
 
         return datetime.datetime(start_datetime.year, start_datetime.month, last_day)
 
@@ -216,12 +213,13 @@ class Dekad:
             return Dekad(new.year, new.month, new.day)
 
         if type(other) == Dekad:
-            dates_list = [self.start + timedelta(i) for i in range(int((other.start -
-                                                                        self.start).days) + 1)]
+            dates_list = [
+                self.start + timedelta(i)
+                for i in range(int((other.start - self.start).days) + 1)
+            ]
             dekads_list = []
             for day_date in dates_list:
-                dekad_date = Dekad(day_date.year, day_date.month,
-                                   day_date.day)
+                dekad_date = Dekad(day_date.year, day_date.month, day_date.day)
                 if dekad_date not in dekads_list:
                     dekads_list.append(dekad_date)
             return dekads_list
@@ -239,10 +237,13 @@ class Dekad:
         return Dekad(new.year, new.month, new.day)
 
     def __repr__(self):
-        return '<Dekad {0:04d}-{1:02d}-{2:02d}>'.format(self.start.year, self.start.month, self.start.day)
+        return "<Dekad {0:04d}-{1:02d}-{2:02d}>".format(
+            self.start.year, self.start.month, self.start.day
+        )
 
     def __hash__(self):
         return hash(self.__repr__())
+
 
 # ..............................................................................
 # FUNCTIONS
@@ -250,7 +251,6 @@ class Dekad:
 
 
 def filter_dekads_by_id(dekads_list, dekad_id):
-
     def filter_function(element):
         return element.number == dekad_id
 
@@ -258,7 +258,6 @@ def filter_dekads_by_id(dekads_list, dekad_id):
 
 
 def filter_dekads_by_years(dekads_list, years_list):
-
     def filter_function(element):
         return element.year in years_list
 
@@ -266,7 +265,7 @@ def filter_dekads_by_years(dekads_list, years_list):
 
 
 def get_date_from_file_name(data_file_name):
-    dic = {'WB':'', 'DWD':''}
+    dic = {"WB": "", "DWD": ""}
     for i, j in iter(dic.items()):
         data_file_name = data_file_name.replace(i, j)
     data_date_year = int(data_file_name[0:4])
@@ -277,7 +276,7 @@ def get_date_from_file_name(data_file_name):
 
 
 def get_date_from_file_name_plusone(data_file_name):
-    dic = {'WB':'', 'DWD':''}
+    dic = {"WB": "", "DWD": ""}
     for i, j in iter(dic.items()):
         data_file_name = data_file_name.replace(i, j)
     data_date_year = int(data_file_name[1:5])
@@ -286,15 +285,15 @@ def get_date_from_file_name_plusone(data_file_name):
     data_date = datetime.date(data_date_year, data_date_month, data_date_day)
     return data_date
 
-   
+
 def get_dekad(data_date):
-    """assign current dekad to a date"""        
+    """assign current dekad to a date"""
     if data_date.day < 11:
-        dekad = '01'
+        dekad = "01"
     elif data_date.day > 10 and data_date.day < 21:
-        dekad = '11' 
+        dekad = "11"
     elif data_date.day > 20:
-        dekad = '21' 
+        dekad = "21"
     return dekad
 
 
@@ -312,7 +311,7 @@ def get_dekad_ordinalday(data_date):
 
 
 def set_last_YYMMDK(data_date):
-    """assign current and previuos dekad to a date"""        
+    """assign current and previuos dekad to a date"""
     if data_date.day < 11:
         last_dekad = 21
         last_month = data_date.month - 1
@@ -328,16 +327,16 @@ def set_last_YYMMDK(data_date):
     elif data_date.day > 20:
         last_dekad = 11
         last_month = data_date.month
-        last_year = data_date.year  
-    return last_year,last_month,last_dekad
+        last_year = data_date.year
+    return last_year, last_month, last_dekad
 
 
 def set_next_YYMMDK(data_date):
-    """assign current and previuos dekad to a date"""      
+    """assign current and previuos dekad to a date"""
     if data_date.day < 11:
         next_dekad = 11
         next_month = data_date.month
-        next_year = data_date.year 
+        next_year = data_date.year
     if data_date.day > 10 and data_date.day < 21:
         next_dekad = 21
         next_month = data_date.month
@@ -348,18 +347,22 @@ def set_next_YYMMDK(data_date):
             next_year = data_date.year + 1
             next_month = 1
         else:
-            next_year = data_date.year 
+            next_year = data_date.year
             next_month = data_date.month + 1
-    return next_year,next_month,next_dekad
+    return next_year, next_month, next_dekad
 
 
-def get_check_date(today,time_delta):
-    check_days = timedelta(days = time_delta)
+def get_check_date(today, time_delta):
+    check_days = timedelta(days=time_delta)
     check_date = today - check_days
-    check_date = (str(check_date.year)+"-"
-                  +str(check_date.month).zfill(2)+"-"
-                  +str(check_date.day).zfill(2))
-#    logger1.info("Checking data since "+check_date+"")
+    check_date = (
+        str(check_date.year)
+        + "-"
+        + str(check_date.month).zfill(2)
+        + "-"
+        + str(check_date.day).zfill(2)
+    )
+    #    logger1.info("Checking data since "+check_date+"")
     return check_date
 
 
@@ -369,34 +372,37 @@ def get_dekad_date(day_date):
     elif day_date.day < 21:
         start_day = 11
     else:
-        start_day = 21      
+        start_day = 21
     return datetime.date(day_date.year, day_date.month, start_day)
 
 
 def generate_times_dekad(dekad_date):
     """Calculate next dekad date to calculate the end of the current dekad
-    Note: dekad date is always the end of the dekad"""    
-    next_year,next_month,next_dekad = set_next_YYMMDK(dekad_date)
+    Note: dekad date is always the end of the dekad"""
+    next_year, next_month, next_dekad = set_next_YYMMDK(dekad_date)
     next_dekad_date = datetime.date(next_year, next_month, next_dekad)
-#    """Calculate the end of the current dekad"""
-#    end_dekad_date = next_dekad_date - timedelta(days = 1)
+    #    """Calculate the end of the current dekad"""
+    #    end_dekad_date = next_dekad_date - timedelta(days = 1)
     """Setting the dates of the dekad days"""
-#    dekad_days = np.arange(str(dekad_date), str(next_dekad_date), dtype='datetime64[D]')
-#    dekad_days = np.arange(dekad_date, next_dekad_date, timedelta(days=1))
-    dekad_days = [dekad_date + datetime.timedelta(days=x) for x in range(0, (next_dekad_date-dekad_date).days)]
+    #    dekad_days = np.arange(str(dekad_date), str(next_dekad_date), dtype='datetime64[D]')
+    #    dekad_days = np.arange(dekad_date, next_dekad_date, timedelta(days=1))
+    dekad_days = [
+        dekad_date + datetime.timedelta(days=x)
+        for x in range(0, (next_dekad_date - dekad_date).days)
+    ]
     return dekad_days
 
 
 def get_dekad_days(dekad_date):
     """Calculate next dekad date to calculate the end of the current dekad
-    Note: dekad date is always the begining of the dekad"""    
+    Note: dekad date is always the begining of the dekad"""
     next_dekad_date = set_next_YYMMDK(dekad_date)
-    
+
     """Calculate the end of the current dekad"""
-    end_dekad_date = next_dekad_date - timedelta(days = 1)
-       
+    end_dekad_date = next_dekad_date - timedelta(days=1)
+
     """Setting the dates of the dekad days"""
-    dekad_days = np.arange(str(dekad_date), str(end_dekad_date), dtype='datetime64[D]')
+    dekad_days = np.arange(str(dekad_date), str(end_dekad_date), dtype="datetime64[D]")
     return dekad_days
 
 
@@ -415,10 +421,11 @@ def create_dekads_list(start_date, end_date):
     type: list
 
     """
-    daily_dates = [start_date + timedelta(i) for i in 
-                   range(int ((end_date - start_date).days)+1)]
+    daily_dates = [
+        start_date + timedelta(i) for i in range(int((end_date - start_date).days) + 1)
+    ]
     dekads_list = []
-    for day_date in daily_dates: 
+    for day_date in daily_dates:
         dekad_date = get_dekad_date(day_date)
         if dekad_date not in dekads_list:
             dekads_list.append(dekad_date)
@@ -442,8 +449,10 @@ def get_dates(start_date, end_date):
     type: list
 
     """
-    dates = [start_date + datetime.timedelta(days=x) for x in
-             range(0, (end_date - start_date).days)]
+    dates = [
+        start_date + datetime.timedelta(days=x)
+        for x in range(0, (end_date - start_date).days)
+    ]
     return dates
 
 
@@ -460,9 +469,8 @@ def get_years(dates):
         type: string
     Returns
     -------
-    list of datetime objects
-    type: list of ints
-
+    dict of year as key and a list of datetime objects as values
+    type: dict with nested list
     """
 
     years = {}
@@ -526,12 +534,16 @@ def get_dates_list(start_date, end_date, frequency):
     list of datetime objects
     type: list
     """
-    start_date = datetime.datetime(int(start_date.split('-')[0]),
-                                   int(start_date.split('-')[1]),
-                                   int(start_date.split('-')[2]))
-    end_date = datetime.datetime(int(end_date.split('-')[0]),
-                                 int(end_date.split('-')[1]),
-                                 int(end_date.split('-')[2]))
+    start_date = datetime.datetime(
+        int(start_date.split("-")[0]),
+        int(start_date.split("-")[1]),
+        int(start_date.split("-")[2]),
+    )
+    end_date = datetime.datetime(
+        int(end_date.split("-")[0]),
+        int(end_date.split("-")[1]),
+        int(end_date.split("-")[2]),
+    )
     if frequency == "w":
         start_week = Week(start_date.year, start_date.month, start_date.day)
         end_week = Week(end_date.year, end_date.month, end_date.day)
@@ -544,11 +556,10 @@ def get_dates_list(start_date, end_date, frequency):
         return start_dekad + end_dekad
     if frequency == "d":
         return get_dates(start_date, end_date)
-    if frequency == "md":
-        return get_months(start_date, end_date)
 
 
-def get_last_timestamp(timestamp, frequency):
+# TODO: check function call flow for this!
+def get_last_timestamp(timestamp, start_date, end_date, frequency):
     """Creates a list of month dates between two dates given as string
     day corresponds to the first day of the month = 1
     Parameters

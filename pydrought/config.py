@@ -39,7 +39,6 @@ class PostgresCredentials:
 
     def _get_db_conn(self):
         data = read_json_file(self._credentials_file_path)
-        print(data)
         conn = "dbname={0} user={1} port={2} host={3} password={4}".format(self._database,
                                                                                 data[self._database]['username'],
                                                                                 data[self._database]['port'],
@@ -296,12 +295,11 @@ def read_json_file(json_file_path):
 
 class ProductMetadata:
 
-    def __init__(self, metadata_filepath, product_code, scale):
+    def __init__(self, metadata_reader, product_code, scale):
 
         self._scale = scale
         self._product_code = product_code
-        # self._metadata_reader = metadata_reader
-        self._metadata_filepath = metadata_filepath
+        self._metadata_reader = metadata_reader
 
         self._metadata= self._get_product_metadata()
 
@@ -396,6 +394,22 @@ class ProductMetadata:
     @property
     def iso_metadata(self):
         return self._get_iso_metadata()
+    
+    @property
+    def data_vars_mapping(self):
+        return self._get_data_vars_mapping()
+
+    @property
+    def regex_parts_mapping(self):
+        return self._get_regex_parts_mapping()
+
+    @property
+    def file_constants(self):
+        return self._get_constants()
+
+    @property
+    def file_name_pattern(self):
+        return self._get_file_name_pattern()
 
     @staticmethod
     def _render_template(template, year, month, day, week, ts, aoi, file_ext):
@@ -407,76 +421,94 @@ class ProductMetadata:
 
 
     def _get_table(self):
-        return self._metadata[self._scale]['table']
+        return self._metadata['metadata_scale']['table']
 
     def _get_name(self):
-        return self._metadata['name']
+        return self._metadata['full_prod']['name']
 
     def _get_grid(self):
-        return self._metadata[self._scale]['grid']
+        return self._metadata['metadata_scale']['grid']
 
     def _get_idcol(self):
-        return self._metadata[self._scale]['id_col']
+        return self._metadata['metadata_scale']['id_col']
 
     def _get_espg(self):
-        return self._metadata[self._scale]['data_srs']
+        return self._metadata['metadata_scale']['data_srs']
 
     def _get_units(self):
-        return self._metadata[self._scale]['units']
+        return self._metadata['metadata_scale']['units']
 
     def _get_thmcol_template(self):
-        return self._metadata[self._scale]['thmcol_template']
+        return self._metadata['metadata_scale']['thmcol_template']
 
     def _get_frequency(self):
-        return self._metadata[self._scale]['frequency']
+        return self._metadata['metadata_scale']['frequency']
 
     def _get_datatype(self):
-        return self._metadata[self._scale]['data_type']
+        return self._metadata['metadata_scale']['data_type']
 
     def _get_srcimg(self):
-        return self._metadata[self._scale]['src_img']
+        return self._metadata['metadata_scale']['src_img']
 
     def _get_firstdate(self):
-        return self._metadata[self._scale]['start_date']
+        return self._metadata['metadata_scale']['start_date']
 
     def _get_storage_folder(self):
-        return self._metadata[self._scale]['storage_folder']
+        return self._metadata['metadata_scale']['storage_folder']
 
     def _get_filename_template(self):
-        return self._metadata[self._scale]['filename_template']
+        return self._metadata['metadata_scale']['filename_template']
 
     def _get_mfname(self):
-        return self._metadata[self._scale]['mapfile']['name']
+        return self._metadata['metadata_scale']['mapfile']['name']
 
     def _get_mflayer(self):
-        return self._metadata[self._scale]['mapfile']['layer']
+        return self._metadata['metadata_scale']['mapfile']['layer']
 
     def _get_mfclasses(self):
-        return self._metadata[self._scale]['mapfile']['mf_classes']
+        return self._metadata['metadata_scale']['mapfile']['mf_classes']
 
     def _get_mcvar(self):
-        return self._metadata[self._scale]['mapconfig']['layer_var']
+        return self._metadata['metadata_scale']['mapconfig']['layer_var']
 
     def _get_mcname(self):
-        return self._metadata[self._scale]['mapconfig']['layer_name']
+        return self._metadata['metadata_scale']['mapconfig']['layer_name']
 
     def _get_mcdates(self):
-        return self._metadata[self._scale]['mapconfig']['layer_dates']
+        return self._metadata['metadata_scale']['mapconfig']['layer_dates']
 
     def _get_qkl(self):
-        return self._metadata[self._scale]['qkl_file']
+        return self._metadata['metadata_scale']['qkl_file']
 
     def _get_wmsserver(self):
-        return self._metadata[self._scale]['wms_server']
+        return self._metadata['metadata_scale']['wms_server']
+
+    def _get_data_vars_mapping(self):
+        if 'vars_mapping' in self._metadata['metadata_scale'].keys():
+            return self._metadata['metadata_scale']['vars_mapping']
+        return []
+
+    def _get_regex_parts_mapping(self):
+        if 'regex_parts_mapping' in self._metadata['metadata_scale'].keys():
+            return self._metadata['metadata_scale']['regex_parts_mapping']
+        return []
+
+    def _get_constants(self):
+        if 'constants' in self._metadata['metadata_scale'].keys():
+            return self._metadata['metadata_scale']['constants']
+        return {}
 
     def _get_iso_metadata(self):
         iso_metadata = self._metadata_reader._read_product_iso_metadata(
                 self._product_code, self._scale)
         return iso_metadata
 
+    def _get_file_name_pattern(self):
+        return self._metadata['metadata_scale']['file_name_pattern']
+
     def _get_product_metadata(self):
         # metadata = read_json_file(self._metadata_reader)
-        pmr = ProductMetadataJsonReader(self._metadata_filepath)
+        pmr = ProductMetadataJsonReader(self._metadata_reader)
         metadata = pmr._read_product_metadata(self._product_code, self._scale)
         return metadata
 
@@ -567,7 +599,7 @@ class ProductMetadataJsonReader:
             metadata['full_prod'] = data['products'][product_code]
             metadata['metadata_scale'] = data['products'][product_code][scale_id]
          
-            return metadata['full_prod']
+            return metadata
         except:
             raise Exception(
                 'Invalid indicator id. Valid indicators ids are: {} or The selected product {} is not present for the selected scale, scale id= {}.'.format(

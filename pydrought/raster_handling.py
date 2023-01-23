@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 #
 # ..............................................................................
- #   Name        : raster_handling.py
- #   Application :
- #   Author      : Carolina Arias Munoz
- #   Created     : 2017-07-11
- #                 Packages: matplotlib, cartopy
- #   Purpose     : This module contains generic functionality for raster maps
- #               handling using gdal and other spatial libraries
+#   Name        : raster_handling.py
+#   Application :
+#   Author      : Carolina Arias Munoz
+#   Created     : 2017-07-11
+#                 Packages: matplotlib, cartopy
+#   Purpose     : This module contains generic functionality for raster maps
+#               handling using gdal and other spatial libraries
 # ..............................................................................
 
 
@@ -15,7 +15,6 @@
 # IMPORTS
 # ..............................................................................
 from osgeo import gdal, osr
-# import osr
 import numpy as np
 import itertools
 import colorsys
@@ -24,20 +23,25 @@ import colorsys
 # FUNCTIONS
 # ..............................................................................
 
-def generate_hue_range(amount, hue, value): #(255, 204, 1)
+
+def generate_hue_range(amount, hue, value):  # (255, 204, 1)
     """http://colorizer.org/"""
-    hue = float(hue)/float(360)
-    HSV_tuples = [(hue, x*1.0/amount, value) for x in range(amount)]
+    hue = float(hue) / float(360)
+    HSV_tuples = [(hue, x * 1.0 / amount, value) for x in range(amount)]
     RGB_tuples = map(lambda x: colorsys.hsv_to_rgb(*x), HSV_tuples)
-    rgb_list = ["ct.SetColorEntry({},({},{},{},1))".format(b,int(a[0]*256-1),
-         int(a[1]*256-1),
-         int(a[2]*256-1)) for a, b in itertools.izip(RGB_tuples,range(amount+1))]
+    rgb_list = [
+        "ct.SetColorEntry({},({},{},{},1))".format(
+            b, int(a[0] * 256 - 1), int(a[1] * 256 - 1), int(a[2] * 256 - 1)
+        )
+        for a, b in itertools.izip(RGB_tuples, range(amount + 1))
+    ]
     return rgb_list
 
 
-def array_to_geotiff(array, out_path, out_filename, rows, cols, trans,
-                     proj, gdal_data_type):
-    """ Convert a numpy array into a geotiff image
+def array_to_geotiff(
+    array, out_path, out_filename, rows, cols, trans, proj, gdal_data_type
+):
+    """Convert a numpy array into a geotiff image
 
     Parameters
     ----------
@@ -82,8 +86,7 @@ def array_to_geotiff(array, out_path, out_filename, rows, cols, trans,
     It can be upgrated changing the figure size
     """
     outdriver = gdal.GetDriverByName("GTiff")
-    outdata = outdriver.Create(out_path + out_filename, cols, rows, 1,
-                               gdal_data_type)
+    outdata = outdriver.Create(out_path + out_filename, cols, rows, 1, gdal_data_type)
     if trans is not None:
         outdata.SetGeoTransform(trans)
     if proj is not None:
@@ -92,7 +95,7 @@ def array_to_geotiff(array, out_path, out_filename, rows, cols, trans,
     outdata.GetRasterBand(1).SetNoDataValue(-9999)
 
 
-def export_to_geotiff(array,srs, out_path,out_filename):
+def export_to_geotiff(array, srs, out_path, out_filename):
     """
 
     Parameters
@@ -110,9 +113,9 @@ def export_to_geotiff(array,srs, out_path,out_filename):
     gdal_data_type = gdal.GDT_Float32
     proj = get_projection_from_espg(int(srs))
     (height, width) = np.shape(array)
-    array_to_geotiff(array, out_path,
-                     out_filename, height,
-                     width, trans, proj, gdal_data_type)
+    array_to_geotiff(
+        array, out_path, out_filename, height, width, trans, proj, gdal_data_type
+    )
 
 
 def get_projection_from_espg(espg):
@@ -121,20 +124,20 @@ def get_projection_from_espg(espg):
     return source.ExportToWkt()
 
 
-def extract_lat_lon_extent(file_path,file_name):
-    im = gdal.Open(file_path+file_name)
-    gt = im.GetGeoTransform() #(minx,Rasterxsize,rot,maxy,rot,rasterysize)
+def extract_lat_lon_extent(file_path, file_name):
+    im = gdal.Open(file_path + file_name)
+    gt = im.GetGeoTransform()  # (minx,Rasterxsize,rot,maxy,rot,rasterysize)
     xcols = im.RasterXSize
     yrows = im.RasterYSize
     minx = gt[0]
-    miny = gt[3] + yrows*gt[5]
-    maxx = gt[0] + xcols*gt[1]
+    miny = gt[3] + yrows * gt[5]
+    maxx = gt[0] + xcols * gt[1]
     maxy = gt[3]
-    lat = np.arange(miny,maxy,gt[5]*-1)
-    #lat = lat[::-1]
-    lon = np.arange(minx,maxx,gt[1])
-    
-    return (minx,miny,maxx,maxy,lat,lon)
+    lat = np.arange(miny, maxy, gt[5] * -1)
+    # lat = lat[::-1]
+    lon = np.arange(minx, maxx, gt[1])
+
+    return (minx, miny, maxx, maxy, lat, lon)
 
 
 def create_transformation_matrix():
@@ -150,7 +153,7 @@ def create_transformation_matrix():
 
 
 def mean_downsample(array, factor):
-    """ Downsample a numpy array according to a factor, using the mean
+    """Downsample a numpy array according to a factor, using the mean
     Downsampling is the reduction in spatial resolution while keeping the same
     two-dimensional (2D) representation
     Parameters
@@ -167,11 +170,17 @@ def mean_downsample(array, factor):
     type : Numpy array
 
     """
-    ys,xs = array.shape
-    cr_array = array[:ys-(ys % int(factor)),:xs-(xs % int(factor))]
-    ds_array = np.nanmean( np.concatenate([[cr_array[i::factor,j::factor]
-        for i in range(factor)]
-        for j in range(factor)]), axis=0)
+    ys, xs = array.shape
+    cr_array = array[: ys - (ys % int(factor)), : xs - (xs % int(factor))]
+    ds_array = np.nanmean(
+        np.concatenate(
+            [
+                [cr_array[i::factor, j::factor] for i in range(factor)]
+                for j in range(factor)
+            ]
+        ),
+        axis=0,
+    )
     return ds_array
 
 

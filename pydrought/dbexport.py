@@ -21,8 +21,6 @@ import itertools
 import logging
 import numpy as np
 import xarray as xr
-import glob
-
 
 from logging.handlers import SMTPHandler
 from pydrought import config as conf
@@ -59,11 +57,6 @@ class ExportFileConfiguration:
     @property
     def years(self):
         return self._organize_dates_by_year()
-
-
-    @property
-    def months(self):
-        return self._organize_dates_by_month()
 
     @property
     def bbox(self):
@@ -131,10 +124,6 @@ class ExportFileConfiguration:
         years_dic = time.get_years(self._dates)
         return years_dic
 
-    def _organize_dates_by_month(self):
-        months_dic = time.get_months(self._start_date, self._end_date)
-        return months_dic
-
     def _calculate_bbox(self, bbox):
         if not bbox == '':
             bbox_list = self._bbox.split(',')
@@ -196,7 +185,7 @@ class ExportFileConfiguration:
     def _get_output_filenames_with_paths(self, dates, year):
         filenames_list = []
         if year:
-            outpath = f'{self._outpath}'
+            outpath = f'{self._outpath}/{year}'
         if self._ts_list == []:
             for date in dates:
                 file_name = os.path.join(outpath,
@@ -243,10 +232,9 @@ def write_sql_filter(dic):
     return filter
 
 
-def export_data_from_db(loggers, db_conn_string, thmcols, product_table, year,date, bbox):
+def export_data_from_db(loggers, db_conn_string, thmcols, product_table, year, bbox):
     loggers['log'].debug('Starting function TblDef4ora ')
-    # filter = [] if str(year) in thmcols[0] else ["year={}".format(year)]
-    filter = [f"date='{date}'"]
+    filter = [] if str(year) in thmcols[0] else ["year={}".format(year)]
     loggers['log'].debug('passed argument to GrdDataManager4ora, '
                          'product_table: {}, thmcols: {}, filter: {}'.format(product_table, thmcols, filter))
     loggers['log'].debug('about to tab2use')
@@ -278,14 +266,14 @@ def export_data_from_db(loggers, db_conn_string, thmcols, product_table, year,da
     return mtrxs, info
 
 
-def create_geotiff(loggers, mtrxs, info4img, output_file_name):
+def create_geotiff(loggers, mtrxs, info4img, output_file_name, metadata):
     # output_file_name includes the output path
     loggers['log'].debug('Starting function create_geotiff')
     loggers['log'].debug('output filename given to GrdDataManager4img'
                          '  = {}'.format(output_file_name))
     info4img.type = 'GTiff'
     dataManager_img = dbie.GrdDataManager4img(output_file_name,
-                                               info4img)
+                                              metadata, info4img)
     loggers['log'].debug('dataManager_img: {}'.format(dataManager_img))
     dataManager_img.save(mtrxs)
     loggers['log'].debug('Exiting function geotiff_database_export')
@@ -312,11 +300,11 @@ def calculate_lon_lat(info4img, product_code):
                                    info4img.tm[0], info4img.tm[3])
         return lon, lat
 
+
 def create_year_netcdf(loggers, year, mtrxs_list, info4img, product_metadata,
                   export_file):
     loggers['log'].debug('Starting function create netcdf')
     output_filename = export_file._year_output_filename(year)
-    print("output_filename",output_filename)
 
     # formatting dates for netcdf export
     dates = export_file.years[year]
@@ -337,13 +325,12 @@ def create_year_netcdf(loggers, year, mtrxs_list, info4img, product_metadata,
     # getting variable attributes
     data = conf.read_json_file(export_file.netcdf_filepath)
     variable_attributes = data[product_metadata.espg]
-    
-    # loggers['log'].debug(f'product_metadata.iso_metadata: {product_metadata.iso_metadata}')
+    loggers['log'].debug(f'product_metadata.iso_metadata: {product_metadata.iso_metadata}')
     nh.export_dataset(dataset=dataset, fillvalue=-9999.0,
                    variables_list=[product_metadata._product_code],
                    variables_units=[product_metadata.units], espg=product_metadata.espg,
-                   output_file_path=f"{export_file.outpath}", output_file_name=output_filename,
-                   general_attributes=None,
+                   output_file_path=export_file.outpath, output_file_name=output_filename,
+                   general_attributes=product_metadata.iso_metadata,
                    variables_attributes=variable_attributes,
                    compression=True)
     return output_filename
@@ -360,7 +347,7 @@ def process_dates(loggers, db_conn_string, product_metadata, export_file,
         thmcols = product_metadata.get_thmcol_list([date], export_file.ts_list)
         loggers['log'].debug('Starting database extraction')
         mtrxs, info4img = export_data_from_db(loggers, db_conn_string, thmcols,
-                                              product_metadata.table, year, date,
+                                              product_metadata.table, year,
                                               export_file.bbox)
         # Create geotiff files from database -----------------------------------
         if export_file.file_ext == 'tif':
@@ -371,13 +358,13 @@ def process_dates(loggers, db_conn_string, product_metadata, export_file,
             loggers['log'].debug('Arguments to be passed to create_geotiff:'
                                  ' loggers, db_conn_string, thmcols: {}, '
                                  ' product_metadata.table: {}, year:{}, '
-                                 'output_filename:{}'.format(
+                                 'output_filename:{}, iso metadata {}'.format(
                                 thmcols, product_metadata.table, year,
-                                output_filename))
+                                output_filename, product_metadata.iso_metadata))
             if mtrxs:
-                print("mtrxs",mtrxs)
                 try:
-                    create_geotiff(loggers, mtrxs, info4img, output_filename)
+                    create_geotiff(loggers, mtrxs, info4img, output_filename,
+                                   product_metadata.iso_metadata)
                 except:
                     pass
             # Create csv files from database -----------------------------------
@@ -407,41 +394,31 @@ def process_years(loggers, db_conn_string, product_metadata, export_file):
     for year in export_file.years.keys():
         loggers['log'].info('Start Processing product_metadata {}, year {}, scale {}'.
                             format(export_file.product_code, year,
-                                export_file.scale))
-        outpath = f'{export_file.outpath}'
-        util.create_folder(outpath)
+                                   export_file.scale))
+        if export_file.file_ext == 'tif':
+            outpath = f'{export_file.outpath}/{year}'
+            util.create_folder(outpath)
         # ------------- Main function processing dates -------------------------
         mtrxs_list, info4img = process_dates(loggers, db_conn_string,
-                                            product_metadata, export_file,
-                                            year)
+                                             product_metadata, export_file,
+                                             year)
         # ----------------------------------------------------------------------
         if export_file.file_ext == 'nc':
             output_filename = create_year_netcdf(loggers, year, mtrxs_list,
-                                            info4img, product_metadata,
-                                                export_file)
-            output_files.append(os.path.join(outpath,output_filename))
+                                               info4img, product_metadata,
+                                                 export_file)
+            output_files.append(output_filename)
         if export_file.file_ext == 'tif':
             loggers['log'].debug('tif export chosen ')
             # TODO: add an argument to turn on/off zip geotiff files
             # Zipping the folder containing the geotiff files
             output_filename_year = export_file._year_output_filename(year)
             zip_filename = output_filename_year.replace('tif', 'zip')
-            zip_filepath = os.path.join(outpath, zip_filename)
+            zip_filepath = os.path.join(export_file.outpath, zip_filename)
             util.zip_folder(outpath, zip_filepath, '.tif')
-
-            # cleanup 
-            files = glob.glob(f'{outpath}/*', recursive=True)
-
-            for f in files:
-                try:
-                    if f.endswith(('.tif', '.xml')):
-                        os.remove(f)
-                except OSError as e:
-                    print("Error: %s : %s" % (f, e.strerror))
-
-            # shutil.rmtree(outpath)
-            loggers['log'].debug(f'zip file {output_filename_year} created ')
-            output_files.append(zip_filepath)
+            shutil.rmtree(outpath)
+            loggers['log'].debug(f'zip file {zip_filepath} created ')
+            output_files.append(zip_filename)
     return output_files
 
 
@@ -462,17 +439,15 @@ def run(product_code, aoi, ts_list, start_date, end_date, file_ext,
     credentials = conf.PostgresCredentials(credentials_filepath, database)
     db_conn_string = credentials.connstr
     # Setting the metadata source (database / json)
-    # if metadata_filepath:
-    # metadata_reader = conf.ProductMetadataJsonReader(metadata_filepath)
-    # else:
-    #     metadata_reader = conf.ProductMetadataDatabaseReader(db_conn_string,
-    #                                           metadata_database_tables)
+    if metadata_filepath:
+        metadata_reader = conf.ProductMetadataJsonReader(metadata_filepath)
+    else:
+        metadata_reader = conf.ProductMetadataDatabaseReader(db_conn_string,
+                                              metadata_database_tables)
 
     # Instantiating ProductMetadata Class
-    product_metadata = conf.ProductMetadata(metadata_filepath, product_code,
+    product_metadata = conf.ProductMetadata(metadata_reader, product_code,
                                             scale)
-
-
     # Instantiating GridMetadata Class
     #grid = conf.GridMetadata(metadata_filepath, product_metadata.grid.lower())
 
@@ -483,7 +458,6 @@ def run(product_code, aoi, ts_list, start_date, end_date, file_ext,
                                           product_metadata.frequency,
                                           product_metadata.filename_template)
     # setting the output folder
-
     if not export_file.outpath:
         export_file.outpath = product_metadata.storage_folder
     loggers['log'].debug('Variables '
@@ -494,8 +468,6 @@ def run(product_code, aoi, ts_list, start_date, end_date, file_ext,
                                                       export_file.dates[-1],
                                                       export_file.years.keys(),
                                                       db_conn_string))
-
-    print("Months zote", export_file.dates)
     # Processing all dates, it is done by year
     output_files = process_years(loggers, db_conn_string, product_metadata,
                                  export_file)
