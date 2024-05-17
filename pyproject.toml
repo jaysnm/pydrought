@@ -14,7 +14,7 @@ cryptography = "^41.0.4"
 PyYAML = "^6.0.1"
 zipfile2 = "0.0.12"
 netCDF4 = "^1.6.2"
-xarray = "^2023.9.0"
+xarray = "^2024.5.0"
 rioxarray = "^0.15.0"
 Pillow = "^9.4.0"
 pydantic = {extras = ["dotenv"], version = "^1.10.4"}
@@ -22,6 +22,7 @@ SQLAlchemy = "^1.4.46"
 pangres = "^4.1.2"
 psycopg2-binary = "^2.9.9"
 pandas = "^2.1.1"
+pip = "^24.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.0.292"
